@@ -303,9 +303,9 @@ in {
         menu = cfg.menuBin;
 
         gaps = {
-          inner = 8;
+          inner = 0;
           outer = 8;
-          smartGaps = true;
+          # smartGaps = true;
         };
 
         input."*" = {

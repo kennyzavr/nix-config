@@ -55,6 +55,11 @@
     dejavu_fonts
     noto-fonts-emoji
     base16-schemes
+    qemu
+    spotify
+    telegram-desktop
+    nix-index
+    obs-studio
   ];
 
   fonts.fontconfig.enable = true;
@@ -120,7 +125,7 @@
     enable = true;
     terminalBin = "${pkgs.alacritty}/bin/alacritty";
     menuBin = "${pkgs.bemenu}/bin/bemenu-run";
-    idleTimeout = 30;
+    idleTimeout = 180;
   };
 
   home.stateVersion = "25.05";

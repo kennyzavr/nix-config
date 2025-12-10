@@ -16,6 +16,8 @@
     cmake
     cmake-format
     python314
+    gcc-no-cxx
+    ncurses
   ];
 
   programs.git = {

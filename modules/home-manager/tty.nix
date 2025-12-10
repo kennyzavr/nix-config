@@ -21,6 +21,7 @@
 
   stylix.targets = {
     alacritty.enable = true;
+    tmux.enable = true;
   };
 
   programs.tmux = {

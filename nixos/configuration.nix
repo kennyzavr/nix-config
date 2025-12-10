@@ -8,8 +8,8 @@
   imports = [
     ./hardware-configuration.nix
     #inputs.self.nixosModules.librewolf
-    inputs.self.nixosModules.pipewire
-    inputs.self.nixosModules.shell
+    # inputs.self.nixosModules.pipewire
+    # inputs.self.nixosModules.shell
   ];
 
   # fileSystems."/" = {
@@ -68,7 +68,39 @@
   networking.hostName = "kennyzar-lt";
   networking.networkmanager.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    wlr = {
+      enable = true;
+    };
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
+
+    config = {
+      common = {
+        default = "*";
+
+        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
+      };
+    };
+  };
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    #jack.enable = true;
+    wireplumber.enable = true;
+  };
+
   security.pam.services.swaylock = {};
+
+  security.polkit.enable = true;
+  services.xserver.enable = false;
 
   time.timeZone = "Asia/Novosibirsk";
 
