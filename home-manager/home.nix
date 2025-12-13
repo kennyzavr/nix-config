@@ -6,9 +6,14 @@
   ...
 }: {
   imports = [
+    inputs.stylix.homeModules.stylix
+    inputs.nixvim.homeManagerModules.nixvim
+    inputs.niri.homeModules.stylix
+    inputs.niri.homeModules.niri
     inputs.self.homeManagerModules.devtools
     inputs.self.homeManagerModules.nixvim
-    inputs.self.homeManagerModules.shell
+    inputs.self.homeManagerModules.desktop-shell
+    inputs.self.homeManagerModules.desktop-shell-nvidia
     inputs.self.homeManagerModules.tty
     inputs.self.homeManagerModules.proxy
     inputs.self.homeManagerModules.librewolf
@@ -64,68 +69,42 @@
 
   fonts.fontconfig.enable = true;
 
-  # disabledModules = [
-  #     "${inputs.stylix}/modules/anki/hm.nix"
-  #     "${inputs.stylix}/modules/ashell/hm.nix"
-  # ];
-
   stylix = {
     enable = true;
-
     autoEnable = false;
-
-    targets = {
-      #       bemenu = {
-      # enable = true;
-      # alternate = true;
-      #       };
-      #       swaylock.enable = true;
-      #       waybar = {
-      #         enable = true;
-      #         addCss = false;
-      #       };
-      # sway.enable = true;
-      # alacritty.enable = true;
-      # nixvim.enable = true;
-      # librewolf = {
-      #   enable = true;
-      #   profileNames = [ "default" ];
-      #   colorTheme.enable = true;
-      # };
-    };
-
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+    polarity = "dark";
+  };
 
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
-      };
-      sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-      emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
-      };
+  stylix.targets = {
+    qt.enable = true;
+    gtk.enable = true;
+    gnome.enable = true;
+    kde.enable = true;
+  };
+
+  stylix.fonts = {
+    monospace = {
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font";
     };
-
-    opacity = {
-      applications = 1.0;
-      terminal = 1.0;
+    sansSerif = {
+      package = pkgs.inter;
+      name = "Inter";
+    };
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Serif";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
     };
   };
 
-  my.shell = {
+  desktop-shell = {
     enable = true;
     terminalBin = "${pkgs.alacritty}/bin/alacritty";
-    menuBin = "${pkgs.bemenu}/bin/bemenu-run";
-    idleTimeout = 180;
   };
 
   home.stateVersion = "25.05";

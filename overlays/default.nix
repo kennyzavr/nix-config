@@ -9,7 +9,7 @@
   modifications = final: prev: {
     gcc-no-cxx = prev.symlinkJoin {
       name = "gcc-no-cxx";
-      paths = [ prev.gcc ];
+      paths = [prev.gcc];
       postBuild = ''
         rm -f $out/bin/g++
         rm -f $out/bin/c++

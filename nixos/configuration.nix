@@ -68,26 +68,6 @@
   networking.hostName = "kennyzar-lt";
   networking.networkmanager.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    wlr = {
-      enable = true;
-    };
-
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
-    ];
-
-    config = {
-      common = {
-        default = "*";
-
-        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
-      };
-    };
-  };
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -98,6 +78,8 @@
   };
 
   security.pam.services.swaylock = {};
+
+  programs.dconf.enable = true;
 
   security.polkit.enable = true;
   services.xserver.enable = false;

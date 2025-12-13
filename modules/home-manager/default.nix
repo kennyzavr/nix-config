@@ -3,8 +3,8 @@
   nvim = import ./nvim.nix;
   nixvim = import ./nixvim/default.nix;
   proxy = import ./proxy.nix;
-  shell = import ./shell.nix;
+  desktop-shell = import ./desktop-shell.nix;
   tty = import ./tty.nix;
   librewolf = import ./librewolf.nix;
-  shell-nvidia = import ./shell-nvidia.nix;
+  desktop-shell-nvidia = import ./desktop-shell-nvidia.nix;
 }
