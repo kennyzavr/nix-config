@@ -13,17 +13,22 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c3cc7c21-bd88-4e69-90c8-7e7102adac08";
+    device = "/dev/disk/by-label/root";
+    fsType = "ext4";
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-label/home";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/511D-7AE2";
+    device = "/dev/disk/by-label/BOOT";
     fsType = "vfat";
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/959a90f2-036f-4537-a695-bdef3a81239a";}
+    {device = "/dev/disk/by-label/swap";}
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "usbhid" "rtsx_usb_sdmmc"];

@@ -10,6 +10,8 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.url = "github:nix-community/nixvim/nixos-25.05";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
     alejandra.url = "github:kamadorueda/alejandra/4.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -21,6 +23,7 @@
     stylix,
     nixvim,
     alejandra,
+    niri,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -54,10 +57,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [
-          stylix.homeModules.stylix
-          nixvim.homeManagerModules.nixvim
           ./home-manager/home.nix
-          self.homeManagerModules."shell-nvidia"
         ];
       };
     };
